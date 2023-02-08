@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(249, 86, 86);
+}
+
+#score{
+    font-size: 28px;
+    float:left;
+    margin-left: 400px;
+}
+#timer{
+    font-size: 28px;
+    float:right;
+    margin-right: 400px;
+}
+
+#drawThis{
+    color:black;
+    font-weight: bold;
+    font-size: 30px;
+}
