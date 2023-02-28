@@ -2,7 +2,7 @@ quick_draw_data_set = ["aircraft carrier","airplane","alarm clock","ambulance","
 
 var random_number = Math.floor((Math.random()*array_1.length)+1);
 console.log(random_number);
-sketch = random_number;
+sketch=quick_draw_data_set[random_number];
 
 drawThis = document.getElementById("drawThis");
 drawThis.innerHTML=drawThis.innerHTML+sketch;
@@ -12,3 +12,39 @@ var timerCheck = ""
 var drawnSketch = ""
 var answerHolder = ""
 var score = 0
+
+function updateCanvas(){
+    background("white");
+    random_number = Math.floor((Math.random()*array_1.length)+1);
+    sketch=quick_draw_data_set[random_number];
+    document.getElementById("drawThis").innerHTML="Sketch to be drawn: "+ sketch;
+}
+
+function setup(){
+    canvas = createCanvas(280, 280)
+    canvas.center()
+    background("white")
+}
+
+function draw(){
+    check_sketch()
+    if( drawnSketch==sketch){
+        answerHolder="set";
+        score++;
+        document.getElementById("score").innerHTML="score: "+score;
+    }
+}
+
+function check_sketch(){
+    timerCounter++;
+    document.getElementById("timer").innerHTML="Timer: "+timerCounter;
+    if(timerCounter>400){
+        timerCounter=0
+        timerCheck="completed"
+    }
+    if(timerCheck=="completed" || answerHolder=="set"){
+        timerCheck="";
+        answerHolder="";
+        updateCanvas();
+    }
+}
